@@ -1,3 +1,3 @@
 # indecision-app
 
-#using react
+#Learning React JS
