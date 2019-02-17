@@ -7,8 +7,9 @@ console.log("App is running");
 var template = React.createElement(
   "p",
   null,
-  "This is JSX from app.js!"
+  "Does this change!?"
 );
+
 var appRoot = document.getElementById('app');
 
 ReactDOM.render(template, appRoot);
