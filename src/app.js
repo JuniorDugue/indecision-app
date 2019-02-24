@@ -14,6 +14,27 @@ var template = (
     </ul>
   </div>);
 
+var user = {
+  name: 'jay R',
+  age: 32, 
+  location: 'Broward'
+};
+
+var userName = 'jRbugz';
+var userAge = 25;
+var userLocation = 'Miami';
+var templateTwo = (
+  <div>
+    <h1>{userName.toUpperCase()}</h1>
+    <h2>{user.name}</h2>
+    <h3>{user.age}</h3>
+    <h4>{user.location}</h4>
+    <p>{userAge}</p>
+    <p>{userLocation.toLowerCase()}</p>
+  </div>
+);
+
 var appRoot = document.getElementById('app');
 
-ReactDOM.render(template, appRoot);
+ReactDOM.render(templateTwo, appRoot);
+// ReactDOM.render(template, appRoot);

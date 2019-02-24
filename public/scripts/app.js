@@ -59,6 +59,51 @@ var template = React.createElement(
   )
 );
 
+var user = {
+  name: 'jay R',
+  age: 32,
+  location: 'Broward'
+};
+
+var userName = 'jRbugz';
+var userAge = 25;
+var userLocation = 'Miami';
+var templateTwo = React.createElement(
+  "div",
+  null,
+  React.createElement(
+    "h1",
+    null,
+    userName.toUpperCase()
+  ),
+  React.createElement(
+    "h2",
+    null,
+    user.name
+  ),
+  React.createElement(
+    "h3",
+    null,
+    user.age
+  ),
+  React.createElement(
+    "h4",
+    null,
+    user.location
+  ),
+  React.createElement(
+    "p",
+    null,
+    userAge
+  ),
+  React.createElement(
+    "p",
+    null,
+    userLocation.toLowerCase()
+  )
+);
+
 var appRoot = document.getElementById('app');
 
-ReactDOM.render(template, appRoot);
+ReactDOM.render(templateTwo, appRoot);
+// ReactDOM.render(template, appRoot);
