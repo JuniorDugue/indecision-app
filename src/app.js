@@ -2,10 +2,17 @@ console.log("App is running");
 
 //JSX - JavaScript XML 
 
+var app = {
+  title: 'Indecision App',
+  subtitle: 'Put your life in the hands of a computer',
+  options: ['One', 'Two']
+};
+
 var template = (
   <div>
-    <h1>Indecision App</h1> 
-    <p>Does this change!?</p>
+    <h1>{app.title}</h1> 
+    {app.subtitle && <p>{app.subtitle}</p>}
+    <p>{app.options.length > 0 ? "Here are your options" : "No options"}</p>
     <ul>
       <li><a href="#">Home</a></li>
       <li><a href="#">Services</a></li>
@@ -15,26 +22,27 @@ var template = (
   </div>);
 
 var user = {
-  name: 'jay R',
-  age: 32, 
-  location: 'Broward'
+  age: 16,
 };
 
-var userName = 'jRbugz';
-var userAge = 25;
-var userLocation = 'Miami';
+function getLocation(location) {
+  if (location) {
+    return <p>Location: {location}</p>;
+  } else {
+    return undefined;
+  }
+}
+
 var templateTwo = (
   <div>
-    <h1>{userName.toUpperCase()}</h1>
-    <h2>{user.name}</h2>
-    <h3>{user.age}</h3>
-    <h4>{user.location}</h4>
-    <p>{userAge}</p>
-    <p>{userLocation.toLowerCase()}</p>
+    <h1>{user.name ? user.name : "Anoymous"}</h1>
+    {(user.age && user.age >= 18) && <p>Age: {user.age}</p>}
+    {getLocation(user.location)}
+    {<h3>my h3</h3>}
   </div>
 );
 
 var appRoot = document.getElementById('app');
 
-ReactDOM.render(templateTwo, appRoot);
-// ReactDOM.render(template, appRoot);
+// ReactDOM.render(templateTwo, appRoot);
+ReactDOM.render(template, appRoot);

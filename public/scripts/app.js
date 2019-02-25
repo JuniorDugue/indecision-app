@@ -1,109 +1,115 @@
-"use strict";
+'use strict';
 
 console.log("App is running");
 
 //JSX - JavaScript XML 
 
+var app = {
+  title: 'Indecision App',
+  subtitle: 'Put your life in the hands of a computer',
+  options: ['One', 'Two']
+};
+
 var template = React.createElement(
-  "div",
+  'div',
   null,
   React.createElement(
-    "h1",
+    'h1',
     null,
-    "Indecision App"
+    app.title
+  ),
+  app.subtitle && React.createElement(
+    'p',
+    null,
+    app.subtitle
   ),
   React.createElement(
-    "p",
+    'p',
     null,
-    "Does this change!?"
+    app.options.length > 0 ? "Here are your options" : "No options"
   ),
   React.createElement(
-    "ul",
+    'ul',
     null,
     React.createElement(
-      "li",
+      'li',
       null,
       React.createElement(
-        "a",
-        { href: "#" },
-        "Home"
+        'a',
+        { href: '#' },
+        'Home'
       )
     ),
     React.createElement(
-      "li",
+      'li',
       null,
       React.createElement(
-        "a",
-        { href: "#" },
-        "Services"
+        'a',
+        { href: '#' },
+        'Services'
       )
     ),
     React.createElement(
-      "li",
+      'li',
       null,
       React.createElement(
-        "a",
-        { href: "#" },
-        "Gallery"
+        'a',
+        { href: '#' },
+        'Gallery'
       )
     ),
     React.createElement(
-      "li",
+      'li',
       null,
       React.createElement(
-        "a",
-        { href: "#" },
-        "Contact"
+        'a',
+        { href: '#' },
+        'Contact'
       )
     )
   )
 );
 
 var user = {
-  name: 'jay R',
-  age: 32,
-  location: 'Broward'
+  age: 16
 };
 
-var userName = 'jRbugz';
-var userAge = 25;
-var userLocation = 'Miami';
+function getLocation(location) {
+  if (location) {
+    return React.createElement(
+      'p',
+      null,
+      'Location: ',
+      location
+    );
+  } else {
+    return undefined;
+  }
+}
+
 var templateTwo = React.createElement(
-  "div",
+  'div',
   null,
   React.createElement(
-    "h1",
+    'h1',
     null,
-    userName.toUpperCase()
+    user.name ? user.name : "Anoymous"
   ),
-  React.createElement(
-    "h2",
+  user.age && user.age >= 18 && React.createElement(
+    'p',
     null,
-    user.name
-  ),
-  React.createElement(
-    "h3",
-    null,
+    'Age: ',
     user.age
   ),
+  getLocation(user.location),
   React.createElement(
-    "h4",
+    'h3',
     null,
-    user.location
-  ),
-  React.createElement(
-    "p",
-    null,
-    userAge
-  ),
-  React.createElement(
-    "p",
-    null,
-    userLocation.toLowerCase()
+    'my h3'
   )
 );
 
 var appRoot = document.getElementById('app');
 
-ReactDOM.render(templateTwo, appRoot);
-// ReactDOM.render(template, appRoot);
+// ReactDOM.render(templateTwo, appRoot);
+ReactDOM.render(template, appRoot);
