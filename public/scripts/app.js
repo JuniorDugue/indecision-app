@@ -70,46 +70,68 @@ var template = React.createElement(
   )
 );
 
-var user = {
-  age: 16
+// =========================================================================================
+
+
+var count = 0;
+var addOne = function addOne() {
+  count++;
+  // console.log("addOne");
+  renderCounterApp();
 };
 
-function getLocation(location) {
-  if (location) {
-    return React.createElement(
-      'p',
-      null,
-      'Location: ',
-      location
-    );
-  } else {
-    return undefined;
-  }
-}
+var minusOne = function minusOne() {
+  count--;
+  // console.log("minusOne");
+  renderCounterApp();
+};
 
-var templateTwo = React.createElement(
-  'div',
-  null,
-  React.createElement(
-    'h1',
-    null,
-    user.name ? user.name : "Anoymous"
-  ),
-  user.age && user.age >= 18 && React.createElement(
-    'p',
-    null,
-    'Age: ',
-    user.age
-  ),
-  getLocation(user.location),
-  React.createElement(
-    'h3',
-    null,
-    'my h3'
-  )
-);
+var reset = function reset() {
+  count = 0;
+  // console.log("reset");
+  renderCounterApp();
+};
 
+// console.log(templateTwo)
 var appRoot = document.getElementById('app');
 
-// ReactDOM.render(templateTwo, appRoot);
-ReactDOM.render(template, appRoot);
+// ReactDOM.render(template, appRoot);
+
+var renderCounterApp = function renderCounterApp() {
+  var templateTwo = React.createElement(
+    'div',
+    null,
+    React.createElement(
+      'h1',
+      null,
+      'Count: ',
+      count
+    ),
+    React.createElement(
+      'button',
+      { onClick: addOne },
+      '+1'
+    ),
+    React.createElement(
+      'button',
+      { onClick: function onClick() {
+          console.log("some value here");
+        } },
+      '+2'
+    ),
+    React.createElement(
+      'button',
+      { onClick: minusOne },
+      '-1'
+    ),
+    React.createElement(
+      'button',
+      { onClick: reset },
+      'Reset'
+    )
+  );
+
+  ReactDOM.render(templateTwo, appRoot);
+};
+
+renderCounterApp();
