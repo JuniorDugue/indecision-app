@@ -5,65 +5,60 @@ console.log("App is running");
 const app = {
   title: 'Indecision App',
   subtitle: 'Put your life in the hands of a computer',
-  options: ['One', 'Two']
+  options: []
 };
 
-let template = (
-  <div>
-    <h1>{app.title}</h1> 
-    {app.subtitle && <p>{app.subtitle}</p>}
-    <p>{app.options.length > 0 ? "Here are your options" : "No options"}</p>
-    <ul>
-      <li><a href="#">Home</a></li>
-      <li><a href="#">Services</a></li>
-      <li><a href="#">Gallery</a></li>
-      <li><a href="#">Contact</a></li>
-    </ul>
-  </div>);
+const onFormSubmit = (e) => {
+  e.preventDefault(); 
+  // console.log("form submitted!"); //console log to test that the form is submitting
+  const option = e.target.elements.option.value;
 
-
-// =========================================================================================
-
-
-  let count = 0;
-  const addOne = () => {
-    count++;
-    // console.log("addOne");
-    renderCounterApp();
-  };
-
-  
-  const minusOne = () => {
-    count--;
-    // console.log("minusOne");
-    renderCounterApp();
+  if (option) {
+    app.options.push(option);
+    e.target.elements.option.value = "";
+    render();
   }
+};
 
-  const reset = () => {
-    count = 0;
-    // console.log("reset");
-    renderCounterApp();
-  }
+const onRemoveAll = () => {
+  app.options = [];
+  render();
+};
 
-// console.log(templateTwo)
 const appRoot = document.getElementById('app');
 
-// ReactDOM.render(template, appRoot);
+const numbers = [55, 101, 1000];
 
-const renderCounterApp = () => {
-  const templateTwo = (
+//challenge
+//create "Remove All" button above list
+//on click -> wipe the array -> rerender
+
+const render = () => {
+  const template = (
     <div>
-      <h1>Count: {count}</h1>
-      <button onClick={addOne}>+1</button>
-      <button onClick={() => {
-        console.log("some value here");
-      }}>+2</button>
-      <button onClick={minusOne}>-1</button>
-      <button onClick={reset}>Reset</button>
+      <h1>{app.title}</h1> 
+      {app.subtitle && <p>{app.subtitle}</p>}
+      <p>{app.options.length > 0 ? "Here are your options" : "No options"}</p>
+      <p>{app.options.length}</p> 
+      <button onClick={onRemoveAll}>Remove All</button>
+      {
+        [<p key="1">a</p>, <p key="2">b</p>, <p key="3">c</p>, <p key="4">d</p>]
+      }
+      <ol>
+        <li>Item one</li>
+        <li>Item two</li>
+      </ol>
+      <form onSubmit={onFormSubmit}> 
+        <input type="text" name="option" />
+        <button>Add Option</button>
+      </form>
     </div>
-  );
+    );
 
-  ReactDOM.render(templateTwo, appRoot);
-}
+    ReactDOM.render(template, appRoot);
+};
 
-renderCounterApp();
+  
+  render();
+
+// =========================================================================================
