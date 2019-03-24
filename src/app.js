@@ -27,11 +27,9 @@ const onRemoveAll = () => {
 
 const appRoot = document.getElementById('app');
 
-const numbers = [55, 101, 1000];
+const numbers = [55, 101, 1000, 2001];
 
-//challenge
-//create "Remove All" button above list
-//on click -> wipe the array -> rerender
+const letters = ['a', 'c', 'e', 'g', 'i', 'k'];
 
 const render = () => {
   const template = (
@@ -42,11 +40,22 @@ const render = () => {
       <p>{app.options.length}</p> 
       <button onClick={onRemoveAll}>Remove All</button>
       {
-        [<p key="1">a</p>, <p key="2">b</p>, <p key="3">c</p>, <p key="4">d</p>]
+        /*numbers.map((number) => {
+          return <p key={number}>Number: {number}</p>;
+        })*/
       }
+
       <ol>
-        <li>Item one</li>
-        <li>Item two</li>
+    {/* 
+      <li>Item one</li>
+      <li>Item two</li> 
+      map over app.options getting back an array of lists (set key and text) 
+    */}
+      {
+        app.options.map((option) => {
+          return <li key={option}>{option}</li>;  
+        })   
+      } 
       </ol>
       <form onSubmit={onFormSubmit}> 
         <input type="text" name="option" />
@@ -54,11 +63,9 @@ const render = () => {
       </form>
     </div>
     );
-
     ReactDOM.render(template, appRoot);
 };
 
-  
   render();
 
 // =========================================================================================

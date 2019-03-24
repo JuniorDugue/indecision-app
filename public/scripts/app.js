@@ -29,11 +29,9 @@ var onRemoveAll = function onRemoveAll() {
 
 var appRoot = document.getElementById('app');
 
-var numbers = [55, 101, 1000];
+var numbers = [55, 101, 1000, 2001];
 
-//challenge
-//create "Remove All" button above list
-//on click -> wipe the array -> rerender
+var letters = ['a', 'c', 'e', 'g', 'i', 'k'];
 
 var render = function render() {
   var template = React.createElement(
@@ -64,36 +62,16 @@ var render = function render() {
       { onClick: onRemoveAll },
       'Remove All'
     ),
-    [React.createElement(
-      'p',
-      { key: '1' },
-      'a'
-    ), React.createElement(
-      'p',
-      { key: '2' },
-      'b'
-    ), React.createElement(
-      'p',
-      { key: '3' },
-      'c'
-    ), React.createElement(
-      'p',
-      { key: '4' },
-      'd'
-    )],
     React.createElement(
       'ol',
       null,
-      React.createElement(
-        'li',
-        null,
-        'Item one'
-      ),
-      React.createElement(
-        'li',
-        null,
-        'Item two'
-      )
+      app.options.map(function (option) {
+        return React.createElement(
+          'li',
+          { key: option },
+          option
+        );
+      })
     ),
     React.createElement(
       'form',
@@ -106,7 +84,6 @@ var render = function render() {
       )
     )
   );
-
   ReactDOM.render(template, appRoot);
 };
 
